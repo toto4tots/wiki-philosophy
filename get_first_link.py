@@ -1,8 +1,8 @@
 import sys
 from bs4 import BeautifulSoup
 import requests
+from constants import WIKIPEDIA, WIKIPATH
 
-WIKIPEDIA = "https://en.wikipedia.org"
 
 """
 Implementation doesn't consider italics or parenthesis.
@@ -16,7 +16,7 @@ def get_first_link_helper(html, visited):
         if (
             ":" in path
             or "#" in path
-            or path[:6] != "/wiki/"
+            or path[:6] != WIKIPATH
             or WIKIPEDIA + path in visited
         ):
             return False

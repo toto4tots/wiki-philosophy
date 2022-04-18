@@ -1,12 +1,19 @@
 import sys
-from get_first_link import get_first_link
+from get_first_link import get_first_link, WIKIPEDIA
+from constants import WIKIPEDIA, WIKIPATH, PHILOSOPHY, MAX_HOPS
 
-
-MAX_HOPS = 100
-PHILOSOPHY = "https://en.wikipedia.org/wiki/Philosophy"
+def is_valid_wikipedia(url):
+    start = WIKIPEDIA + WIKIPATH
+    if url[:len(start)] != start:
+        return False
+    return True
 
 
 def main(curr_url):
+    if not is_valid_wikipedia(curr_url):
+        print("Invalid url. Must be a url to an English Wikipedia page")
+        return
+
     hop_num = 0
     visited = []
     while hop_num <= MAX_HOPS:
