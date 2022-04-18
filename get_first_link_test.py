@@ -1,5 +1,5 @@
 import unittest
-from get_first_link import get_first_link_helper
+from get_first_link import _get_first_link_helper
 
 
 class TestSuite(unittest.TestCase):
@@ -7,7 +7,7 @@ class TestSuite(unittest.TestCase):
         with open("downloaded/epistemology.txt", "r") as f:
             html = f.read()
         self.assertEqual(
-            get_first_link_helper(html, []),
+            _get_first_link_helper(html, []),
             "https://en.wikipedia.org/wiki/Ancient_Greek_language",
         )
 
@@ -15,7 +15,7 @@ class TestSuite(unittest.TestCase):
         with open("downloaded/epistemology.txt", "r") as f:
             html = f.read()
         self.assertEqual(
-            get_first_link_helper(
+            _get_first_link_helper(
                 html, ["https://en.wikipedia.org/wiki/Ancient_Greek_language"]
             ),
             "https://en.wikipedia.org/wiki/-logy",
@@ -25,8 +25,8 @@ class TestSuite(unittest.TestCase):
         with open("downloaded/invalid_article.txt", "r") as f:
             html = f.read()
         self.assertEqual(
-            get_first_link_helper(html, []),
-            "",
+            _get_first_link_helper(html, []),
+            None,
         )
 
 
