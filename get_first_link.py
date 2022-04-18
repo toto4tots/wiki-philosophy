@@ -10,8 +10,9 @@ def _get_first_link_helper(html, visited):
     """
     The helper function extracts the first link in the content body of the wikipedia page
 
-    Implementation doesn't consider italics or parenthesis.
-    Heavily relies on Wikipedia structure to not change
+    - Implementation doesn't consider italics or parenthesis
+    - Heavily relies on Wikipedia structure to not change
+    - Does not revisit past links
 
     """
 
