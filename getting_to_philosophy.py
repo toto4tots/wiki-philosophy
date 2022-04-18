@@ -3,8 +3,7 @@ from get_first_link import get_first_link, WIKIPEDIA
 from constants import WIKIPEDIA, WIKIPATH, PHILOSOPHY, MAX_HOPS
 
 def is_valid_wikipedia(url):
-    start = WIKIPEDIA + WIKIPATH
-    if url[:len(start)] != start:
+    if not url.startswith(WIKIPEDIA + WIKIPATH):
         return False
     return True
 

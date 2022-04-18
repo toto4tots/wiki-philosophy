@@ -4,19 +4,22 @@ import requests
 from constants import WIKIPEDIA, WIKIPATH
 
 
-"""
-Implementation doesn't consider italics or parenthesis.
-Heavily relies on Wikipedia structure to not change
 
-"""
+def _get_first_link_helper(html, visited):
 
+    """
+    The helper function extracts the first link in the content body of the wikipedia page
 
-def get_first_link_helper(html, visited):
+    Implementation doesn't consider italics or parenthesis.
+    Heavily relies on Wikipedia structure to not change
+
+    """
+
     def is_valid(path):
         if (
             ":" in path
             or "#" in path
-            or path[:6] != WIKIPATH
+            or not path.startswith(WIKIPATH)
             or WIKIPEDIA + path in visited
         ):
             return False
@@ -34,4 +37,4 @@ def get_first_link_helper(html, visited):
 
 def get_first_link(url, visited):
     html = requests.get(url).text
-    return get_first_link_helper(html, visited)
+    return _get_first_link_helper(html, visited)
